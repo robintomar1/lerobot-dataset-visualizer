@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["react-icons", "recharts", "@huggingface/hub"],
   },
   generateBuildId: () => packageJson.version,
+  // Datasets are fetched from the browser, where only inlined variables exist:
+  // without this, DATASET_URL was read on the server and ignored by the viewer.
+  env: process.env.DATASET_URL
+    ? { DATASET_URL: process.env.DATASET_URL }
+    : undefined,
 };
 
 export default nextConfig;
