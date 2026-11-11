@@ -4,7 +4,10 @@ import { useState } from "react";
 import { InlineLoading } from "@/components/ui";
 import { useTheme } from "@/utils/theme";
 
-const DOCTOR_SPACE = "https://jashshah999-lerobot-doctor.hf.space/";
+/** The public Space, or a local copy of its app that can read datasets that are not on the Hub. */
+const DOCTOR_SPACE =
+  process.env.NEXT_PUBLIC_DOCTOR_URL ||
+  "https://jashshah999-lerobot-doctor.hf.space/";
 
 /** The lerobot-doctor Space, embedded for this dataset. */
 export default function DoctorPanel({ repoId }: { repoId: string }) {
